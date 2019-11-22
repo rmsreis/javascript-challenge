@@ -9,18 +9,17 @@ var tbody = d3.select("tbody");
 function appendRowsAndData(obj) {
     var row = tbody.append("tr");
 
-    // Below loop assumes object keys are in same order and are present every time
     Object.entries(obj).forEach(([key, value]) => {
         row.append("td").text(value); 
     })
 };
 
-// Append all table rows and data
+// Append table rows and data
 data.forEach(appendRowsAndData);
 
 var button = d3.select("#filter-btn");
 
-// Only runs when button is clicked or user presses enter
+// Only runs when button is clicked or presses enter
 button.on("click", function() {
     d3.event.preventDefault();
 
@@ -33,7 +32,7 @@ button.on("click", function() {
         filterInputs.datetime = datetime;
     }
 
-    // This variable set in moreFilters.on()
+    
     if (usingMoreFilters) {
         var cityFilter = d3.select("#City-filter");
         var city = cityFilter.property("value").toLowerCase();
@@ -88,7 +87,7 @@ moreFilters.on("click", function() {
 
     usingMoreFilters = true;
 
-    // Use for loop to create additional filters
+    // Use to create additional filters
     var filters = d3.select("#filters");
     const filterList = ["City", "State", "Country", "Shape"];
 
@@ -103,7 +102,7 @@ moreFilters.on("click", function() {
     resetFilters.style("display", "block");
 });
 
-// "reset" button clears filters and displays all data
+// "reset" button clears filters and displays the whole data.js
 resetFilters.on("click", function() {
     d3.event.preventDefault();
 
